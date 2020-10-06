@@ -134,29 +134,14 @@ export const getOnChange = ({ inputType, onChange, fieldName }) => {
     fieldName,
     value: val
   })
+
   if (inputType !== inputTypes.FILE_TYPE) {
     return defaultHandleOnChange
   }
 
   return (evt => {
-    const fileReader = new FileReader()
-
-    const onloadend = () => {
-      // handle result of read
-      if (!fileReader.error) {
-        const content = fileReader.result
-        // since cannot save ArrayBuffer to store, convert value
-        const converted = arrayBufferToStoreValue(content)
-        defaultHandleOnChange(converted)
-      } else {
-        // TODO handle error
-      }
-    }
-
     if (evt.target.files.length > 0) {
-      // initiate read
-      fileReader.onloadend = onloadend
-      fileReader.readAsArrayBuffer(evt.target.files[0])
+      defaultHandleOnChange(evt.target.files[0])
     }
   })
 }

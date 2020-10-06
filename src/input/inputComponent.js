@@ -357,7 +357,6 @@ export const InputFile = ({ onChange, error, id, labelStr, className, required, 
       customLabel={customLabel}>
       <input
         type='file'
-        accept='image/*'
         onChange={onChange}
         className={`${className}${error ? ' is-invalid' : ''}`}
         id={id}
