@@ -1,6 +1,6 @@
 import { components } from 'react-select'
 import React from 'react'
-import _ from 'lodash'
+import * as R from 'ramda'
 import { FixedSizeList as List } from 'react-window'
 
 const OptimizedMenuList = props => {
@@ -11,7 +11,7 @@ const OptimizedMenuList = props => {
   const listHeight = height * children.length
   const [value] = getValue()
   const initialOffset = value && maxHeight < listHeight
-    ? options.findIndex(obj => _.isEqual(obj, value)) * height
+    ? options.findIndex(obj => R.equals(obj, value)) * height
     : 0
 
   return (
