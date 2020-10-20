@@ -10,7 +10,7 @@ const OptimizedMenuList = props => {
   const height = 38
   const listHeight = height * children.length
   const [value] = getValue()
-  const initialOffset = value
+  const initialOffset = value && maxHeight < listHeight
     ? options.findIndex(obj => _.isEqual(obj, value)) * height
     : 0
 
